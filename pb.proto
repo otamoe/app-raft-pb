@@ -3,6 +3,16 @@ syntax = "proto3";
 
 package pb;
 
+
+enum UpdateAction {
+    NONE = 0;
+    CREATE = 1;
+    UPDATE = 2;
+    DELETE = 3;
+}
+
+
+
 // 返回 字段
 message ResultField {
     // 响应 key
@@ -128,6 +138,9 @@ message UpdateEntry {
 
     // 写入 expire 留空 就是 查找到的 expire  1 就是删除  math.MaxUint64 就是不过期
     uint64 expire = 4;
+
+    // 更新动作
+    UpdateAction action = 5;
 }
 
  
